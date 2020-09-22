@@ -89,3 +89,16 @@ def delete_book(book_id):
     db.session.commit()
     schema = BookSchema()
     return jsonify(schema.dump(book))
+
+
+@app.route('/api/books')
+def list_books():
+    """List all books matching author and year published filters."""
+    books = Book.query
+    if (author := request.args.get('author')) is not None:
+        books = books.filter_by(author=author)
+    if (year := request.args.get('year')) is not None:
+        books = books.filter_by(year_published=int(year))
+    books = books.all()
+    schema = BookSchema(many=True)
+    return jsonify(schema.dump(books))
