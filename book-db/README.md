@@ -7,7 +7,7 @@ This microservice wraps a database of books in a REST API.
 1. Install and run [Docker](https://www.docker.com/).
 2. In the `book-db` directory, run `docker build -t book-db .`
 3. Run `docker run -p 5000:5000 book-db`
-4. Book DB should be running at [http://localhost:5000/](http://localhost:5000/)
+4. Book DB should be running at [http://localhost:5000/api](http://localhost:5000/api)
 
 
 ## API requests
